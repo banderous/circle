@@ -31,7 +31,11 @@ class TestPrime < Test::Unit::TestCase
         assert_equal("%1s %5s", getFormatStringForPadding([1, 5]))
     end
     
-    def testInsertsRowHeaders
-       assert_equal([[4, 1, 2]], insertRowHeaders([[1, 2]], [4]))
+    def testInsertsRowPrefix
+       assert_equal([[4, 1, 2]], insertRowPrefixes([[1, 2]], [4]))
+    end
+    
+    def testCompleteTableFormattedAsString
+        assert_equal("  1\n1 1", getTableOfSquares([1]));
     end
 end
