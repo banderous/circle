@@ -28,7 +28,7 @@ class TestPrime < Test::Unit::TestCase
     end
     
     def testConstructsFormatStringWithWidths
-        assert_equal("%1d %5d", getFormatStringForPadding([1, 5]))
+        assert_equal("%1s %5s", getFormatStringForPadding([1, 5]))
     end
     
     def testInsertsRowHeaders

@@ -14,7 +14,7 @@ def insertRowHeaders(table, headers)
 end
 
 def getFormatStringForPadding(rowPadding)
-    return rowPadding.map {|x| "%" + String(x) + "s"}.join(" ")
+    return rowPadding.map {|x| "%#{x}s"}.join(" ")
 end
 
 def printTableOfSquares(list)
@@ -27,7 +27,6 @@ def printTableOfSquares(list)
     formatString = getFormatStringForPadding(columnWidths) + "\n"
     
     table.each {|row| printf(formatString, *row) }
-    return
 end
 
 # As requested, no library function in sight!
