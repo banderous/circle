@@ -1,4 +1,4 @@
- require "prime"
+require "prime"
 require "test/unit"
  
 class TestPrime < Test::Unit::TestCase
