@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require "prime"
+require_relative "prime"
 require "test/unit"
  
 class TestPrime < Test::Unit::TestCase
@@ -39,5 +39,17 @@ class TestPrime < Test::Unit::TestCase
     
     def testCompleteTableFormattedAsString
         assert_equal("  1\n1 1", getTableOfSquares([1]));
+    end
+    
+    def testZerothPrime
+        assert_equal([], firstNPrimes(0))
+    end
+    
+    def testFirstPrime
+        assert_equal([2], firstNPrimes(1))
+    end
+    
+    def testFirst10Primes
+        assert_equal([2, 3, 5, 7, 11, 13, 17, 19, 23, 29], firstNPrimes(10))
     end
 end
