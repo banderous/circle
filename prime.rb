@@ -36,31 +36,22 @@ end
  using iterators that track each prime number we find. Iterators are keyed on their next 
  multiple in an associative array and advanced by their prime when that number is checked.
 =end
-def firstNPrimes(n)
-    result = []
-
-    # Set a default creator for when keys are not found.
-    iterators = Hash.new {|hash, key| hash[key] = []}
-    
-    # Our first iterator is the first prime number.
-    p = 2
-    iterators[p * p] << p
-    while result.length < n
-        iteratorsAtP = iterators[p]
-        iterators.delete(p);
-        if (0 == iteratorsAtP.length)
-            # Never touched so must be prime, add it to the iterators.
-            iterators[p * p] << p
-            result << p
-        else
-            # Cannot be prime if reached by an iterator. Advance our iterators
-            # to their next composites.
-            iteratorsAtP.each {|x| iterators[p + x] << x}
-        end
-        p = p + 1
+def firstNPrimes(n, p = 2, iterators = Hash.new {|hash, key| hash[key] = []})
+    if (n == 0)
+        return []
     end
-    
-    return result
+
+    iteratorsAtP = iterators[p]
+    iterators.delete(p);
+    if (0 == iteratorsAtP.length)
+        # Never touched so must be prime, add it to the iterators.
+        iterators[p * p] << p
+        return [p] + firstNPrimes(n - 1, p + 1, iterators)
+    end
+    # Cannot be prime if reached by an iterator. Advance our iterators
+    # to their next composites.
+    iteratorsAtP.each {|x| iterators[p + x] << x}
+    return firstNPrimes(n, p + 1, iterators)
 end
 
 puts getTableOfSquares(firstNPrimes(10))
