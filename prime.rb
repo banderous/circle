@@ -33,9 +33,8 @@ end
  Based on the Sieve of Eratosthenes but modified to be incremental.
  
  Rather than searching to a fixed upper bound, we compute and discard composite numbers lazily,
- using iterators that track each prime number we find. The iterators are keyed to their next 
- multiple in an associative array; when a value is reached, any iterators are advanced by
- their respective primes.
+ using iterators that track each prime number we find. Iterators are keyed on their next 
+ multiple in an associative array and advanced by their prime when that number is checked.
 =end
 def firstNPrimes(n)
     result = []
