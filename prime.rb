@@ -42,9 +42,8 @@ def firstNPrimes(n)
     # Set a default creator for when keys are not found.
     iterators = Hash.new {|hash, key| hash[key] = []}
     
-    # Our first iterator is the first prime number.
+    # Our first prime number.
     p = 2
-    iterators[p * p] << p
     while result.length < n
         iteratorsAtP = iterators[p]
         iterators.delete(p);
