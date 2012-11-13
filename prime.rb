@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 
 def calculateTableOfSquares(list)
     return list.map {|x| list.map {|y| x * y}}
